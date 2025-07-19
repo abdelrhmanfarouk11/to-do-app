@@ -1,0 +1,90 @@
+@import url("./index.css");
+.task-holder {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 1em;
+  border-radius: 5px;
+}
+.enter-task {
+  display: flex;
+  padding: 5px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+.enter-task input {
+  width: 90%;
+  height: 60px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: 0;
+  border-bottom: 1px solid var(--scondery-color);
+  margin: 0 1rem;
+}
+.enter-task .add-btn {
+  background-color: var(--primary-color);
+  width: 70px;
+  height: 50px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+.add-btn:hover {
+  background-color: var(--scondery-color);
+}
+.task-content {
+  height: 80%;
+  width: 100%;
+  border-radius: 5px;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+.task-holder p {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem;
+}
+.task {
+  background-color: var(--navy);
+  border-left: 4px solid var(--primary-color);
+  color: black;
+  font-weight: bold;
+  margin: 1rem 10px;
+  height: 60px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+.icon-container {
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.task.active {
+  background-color: var(--primary-color);
+  transition: 0.3s background-color, color ease-in-out;
+}
+.hover {
+  padding: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+.hover:hover {
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+  .content-title {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .content-title {
+    font-size: 10px;
+  }
+}
