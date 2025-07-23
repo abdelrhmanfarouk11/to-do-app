@@ -13,7 +13,7 @@ type Props = {
   pinnedCount: number;
 };
 
-const TaskHolder = ({ tasks, setTasks, pinnedCount }: Props) => {
+const TaskHolder = ({ tasks, setTasks }: Props) => {
   const [newTask, setNewTask] = useState("");
 
   const handleTasks = (event: React.ChangeEvent<HTMLInputElement>) => {
