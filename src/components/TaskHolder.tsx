@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../css/taskholder.css";
 
 type Task = {
+  id: string;
   text: string;
   pinned: boolean;
 };
@@ -9,9 +10,10 @@ type Task = {
 type Props = {
   tasks: Task[];
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  pinnedCount: number;
 };
 
-const TaskHolder = ({ tasks, setTasks }: Props) => {
+const TaskHolder = ({ tasks, setTasks, pinnedCount }: Props) => {
   const [newTask, setNewTask] = useState("");
 
   const handleTasks = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,28 +22,37 @@ const TaskHolder = ({ tasks, setTasks }: Props) => {
 
   const addTasks = () => {
     if (newTask.trim() !== "") {
-      setTasks((prev) => [...prev, { text: newTask, pinned: false }]);
+      const newTaskObj: Task = {
+        id: Date.now().toString(),
+        text: newTask,
+        pinned: false,
+      };
+      setTasks((prev) => [...prev, newTaskObj]);
       setNewTask("");
     }
   };
 
-  const deleteTask = (index: number) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
+  const deleteTask = (id: string) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
   };
 
-  const handlePin = (index: number) => {
+  const handlePin = (id: string) => {
     const updatedTasks = [...tasks];
-    const [selectedTask] = updatedTasks.splice(index, 1);
-    if (selectedTask.pinned) {
-      selectedTask.pinned = false;
-      updatedTasks.unshift(selectedTask);
-    } else {
-      selectedTask.pinned = true;
-      updatedTasks.push(selectedTask);
+    const index = updatedTasks.findIndex((task) => task.id === id);
+
+    if (index !== -1) {
+      const [selectedTask] = updatedTasks.splice(index, 1);
+      selectedTask.pinned = !selectedTask.pinned;
+      if (selectedTask.pinned) {
+        updatedTasks.push(selectedTask);
+      } else {
+        updatedTasks.unshift(selectedTask);
+      }
+      setTasks(updatedTasks);
     }
-    setTasks(updatedTasks);
   };
+
   const visableTasks = tasks.filter((task) => !task.pinned);
 
   return (
@@ -60,36 +71,30 @@ const TaskHolder = ({ tasks, setTasks }: Props) => {
           <i className="fa-solid fa-plus"></i>
         </button>
       </div>
+
       {visableTasks.length === 0 ? (
-        <p className="content-title">your tasks will appear here!</p>
+        <p className="content-title">Your tasks will appear here!</p>
       ) : (
         <div className="task-content">
-          {visableTasks.map((task) => {
-            const realIndex = tasks.indexOf(task);
-
-            return (
-              <div
-                className={`task ${task.pinned ? "active" : ""}`}
-                key={realIndex}
-              >
-                {task.text}
-                <div className="icon-container">
-                  <button
-                    className="delete-btn"
-                    onClick={() => deleteTask(realIndex)}
-                  >
-                    <i className="fa-solid fa-check hover"></i>
-                  </button>
-                  <button
-                    className="pin-btn"
-                    onClick={() => handlePin(realIndex)}
-                  >
-                    <i className="fa-solid fa-thumbtack hover"></i>
-                  </button>
-                </div>
+          {visableTasks.map((task) => (
+            <div
+              className={`task ${task.pinned ? "active" : ""}`}
+              key={task.id}
+            >
+              {task.text}
+              <div className="icon-container">
+                <button
+                  className="delete-btn"
+                  onClick={() => deleteTask(task.id)}
+                >
+                  <i className="fa-solid fa-check hover"></i>
+                </button>
+                <button className="pin-btn" onClick={() => handlePin(task.id)}>
+                  <i className="fa-solid fa-thumbtack hover"></i>
+                </button>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       )}
     </div>

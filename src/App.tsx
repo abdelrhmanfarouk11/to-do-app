@@ -1,12 +1,14 @@
+// App.tsx
+import { ThemeProvider } from "./context/themeContext";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import './css/app.css'
+
 const App = () => {
   return (
-    <div className="main-content">
-      <Navbar />
+    <ThemeProvider>
+      <Navbar/>
       <Home />
-    </div>
+    </ThemeProvider>
   );
 };
 

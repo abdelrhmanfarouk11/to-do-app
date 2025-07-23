@@ -78,13 +78,4 @@
   border-radius: 2px;
 }
 
-@media (max-width: 1024px) {
-  .content-title {
-    font-size: 1rem;
-  }
-}
-@media (max-width: 480px) {
-  .content-title {
-    font-size: 10px;
-  }
-}
+
