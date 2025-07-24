@@ -1,13 +1,14 @@
 @import url("./index.css");
 .home {
   background-image: url("../assets/endless-constellation.svg");
-  height: 90vh;
+  height: 110vh;
   background-position: center;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow-y: hidden;
+  justify-content: space-between;
+  overflow: hidden;
 }
 .container {
   position: relative;
@@ -25,6 +26,7 @@
   -webkit-box-shadow: -1px 4px 33px 0px var(--scondery-color);
   -moz-box-shadow: -1px 4px 33px 0px var(--scondery-color);
   border: 1px solid #dedede;
+  margin: 1rem;
 }
 .content {
   order: 1;
@@ -59,8 +61,9 @@
   gap: 10px;
   align-items: center;
   position: relative;
-  margin: 0.5rem 0;
+  margin: 0.2rem 0;
 }
+
 .pinned-count {
   width: 30px;
   height: 30px;
@@ -105,6 +108,7 @@ ul p {
   height: 50%;
   animation: aside-close 0.3s ease-in-out;
 }
+
 .hadle-open {
   width: 30px;
   height: 30px;
@@ -149,6 +153,49 @@ ul p {
   height: 20%;
 }
 
+footer {
+  background-color: var(--white-color);
+  width: 100%;
+  height: 15vh;
+  margin-top: 1rem;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+}
+footer .rights {
+  display: flex;
+  justify-content: space-between;
+}
+footer h3 {
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-align: center;
+}
+footer span {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
+footer p {
+  text-transform: capitalize;
+  margin: 5px;
+}
+footer a {
+  text-transform: lowercase;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+footer .contact {
+  display: flex;
+  gap: 1.5rem;
+}
+.contact a {
+  color: black;
+}
 @keyframes aside-open {
   from {
     transform: translateY(100%);
@@ -192,6 +239,18 @@ ul p {
   .content {
     width: 100%;
     font-size: 1rem;
+  }
+  footer {
+    font-size: 0.8rem;
+  }
+  footer h3 {
+    font-size: 0.8rem;
+  }
+  h3 span {
+    font-size: 1rem;
+  }
+  .contact i {
+    text-align: center;
   }
 }
 

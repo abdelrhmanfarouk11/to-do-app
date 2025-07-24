@@ -85,6 +85,43 @@ const Home = () => {
           />
         </div>
       </div>
+      <footer>
+          <h3>
+            write all your daily tasks eaisly with <span>Taskify</span>
+            <i className="fa fa-flag"></i>
+          </h3>
+          <p>
+            all rights reseved for{" "}
+            <a
+              href="mailto:abdelrhmanfaroukaa@gmail.com?subject=Hello%20Farouk&body=Hi%20Farouk,%0D%0A%0D%0AI%20want%20to%20contact%20you%20regarding..."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              abdelrhmanfaroukaa@gmail.com
+            </a>
+            in 2025
+          </p>
+        <div className="rights">
+          <div className="contact">
+          <a
+            href="https://www.facebook.com/AbdelrhmanFarouka"
+          >
+            <i className="fa-brands fa-facebook"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/abdelrhman-farouk-98b708271/"
+          >
+            <i className="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/abdelrhmanfarouk11"
+          >
+            <i className="fa-brands fa-github"></i>
+          </a>
+        </div>
+        </div>
+        
+      </footer>
     </div>
   );
 };
